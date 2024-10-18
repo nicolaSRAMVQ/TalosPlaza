@@ -16,7 +16,7 @@ export const NFTSchema = new Schema({
   //   ref: 'Collection',
   //   required: true,
   // },
-  fecha_registro: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },

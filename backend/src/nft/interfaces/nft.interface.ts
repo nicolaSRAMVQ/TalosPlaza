@@ -8,5 +8,5 @@ export interface NFT extends Document {
   readonly availableForTrade: boolean;
   readonly attributes: Record<string, string>;
   readonly collectionId: string;
-  readonly fecha_registro: Date;
+  readonly createdAt: Date;
 }

@@ -20,5 +20,5 @@ export class CreateNFTDTO {
   readonly attributes: String;
   @ApiProperty({ example: 'QmVnu7JQVoDRqSgHB' })
   readonly collectionId: string;
-  readonly fecha_registro: Date;
+  readonly createdAt: Date;
 }
