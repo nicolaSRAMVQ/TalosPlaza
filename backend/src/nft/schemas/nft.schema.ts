@@ -10,11 +10,12 @@ export const NFTSchema = new Schema({
     type: Map,
     of: String,
   },
-  collectionId: {
-    type: Schema.Types.ObjectId,
-    ref: 'Collection',
-    required: true,
-  },
+  collectionId: { type: String, required: true },
+  // collectionId: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Collection',
+  //   required: true,
+  // },
   fecha_registro: {
     type: Date,
     default: Date.now,
