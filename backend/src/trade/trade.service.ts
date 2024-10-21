@@ -9,7 +9,7 @@ import { NFT } from 'src/nft/interfaces/nft.interface';
 export class TradeService {
   constructor(
     @InjectModel('Trade') private tradeModel: Model<Trade>,
-    private nftModel: Model<NFT>,
+    @InjectModel('NFT') private nftModel: Model<NFT>,
   ) {}
 
   async createTrade(createTradeDTO: CreateTradeDTO): Promise<Trade> {
