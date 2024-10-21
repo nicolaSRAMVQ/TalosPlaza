@@ -12,7 +12,7 @@ export class TradeService {
     private nftModel: Model<NFT>,
   ) {}
 
-  async createNFT(createTradeDTO: CreateTradeDTO): Promise<Trade> {
+  async createTrade(createTradeDTO: CreateTradeDTO): Promise<Trade> {
     let trade = new this.tradeModel(createTradeDTO);
     return await trade.save();
   }
@@ -60,10 +60,14 @@ export class TradeService {
   }
 
   async historyByWallet(walletAddress: string): Promise<Trade[]> {
-    const trades = await this.tradeModel.find({
-      $or: [{ from: walletAddress }, { to: walletAddress }],
-      status: { $in: ['accepted', 'completed'] },
-    });
+    const trades = await this.tradeModel
+      .find({
+        $or: [{ from: walletAddress }, { to: walletAddress }],
+        status: { $in: ['accepted', 'completed'] },
+      })
+      .populate('offeredNftId')
+      .populate('requestedNftId')
+      .sort({ createdAt: -1 });
     return trades;
   }
 }
